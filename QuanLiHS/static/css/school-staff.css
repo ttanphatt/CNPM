@@ -1,0 +1,22 @@
+.TNHS{
+    height: 500px;
+    background-color: #ADD8E6;
+    margin: 5%;
+}
+.functions > div > h2{
+    padding: 10px 0;
+    text-align: center;
+}
+div.form_tiepnhan{
+    padding: 0 10%;
+}
+.LDSL{
+    height: 500px;
+    background-color: #FFDAB9;
+    margin: 5%;
+}
+.DCDSL{
+    height: 500px;
+    background-color: #BC8F8F;
+    margin: 5%;
+}
