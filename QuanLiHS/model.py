@@ -22,11 +22,12 @@ from flask_login import UserMixin
 
 class BaseModel(db.Model):
     __abstract__ = True
-    id = Column(Integer, primary_key=True, autoincrement=True)
+    # id = Column(Integer, primary_key=True, autoincrement=True)
 
 
 class Admin(BaseModel):
     __tablename__ = 'Admin'
+    id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(50), nullable=False)
     major = Column(String(50), nullable=False)
     password = Column(String(100))
@@ -38,23 +39,26 @@ class Admin(BaseModel):
 
 class Student(BaseModel):
     __tablename__ = 'Students'
-    # id_stu = Column(Integer, primary_key=True, autoincrement=True)
-    # id_scores = relationship('Student', backref='scores', lazy=False)
-    stu_name = Column(String(50), nullable=False)
-    gender = Column(String(50), nullable=False)
+    id_stu = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(String(50), nullable=False)
+    sex = Column(String(50), nullable=False)
     birthday = Column(String(50), nullable=False)
     address = Column(String(100), nullable=False)
-    number_phone = Column(String(100), nullable=False)
-    mail = Column(String(100), nullable=False)
+    number = Column(String(100), nullable=False)
+    email = Column(String(100), nullable=False)
+
 
     def __str__(self):
         return self.name
 
 class scores(BaseModel):
-    __tablename__ = 'Scores'
-    #id_stu = Column(Integer, ForeignKey(Student.id_stu), nullabl=False)
-    stu_name = Column(String(50), nullable=False)
-    gender = Column(String(50), nullable=False)
+    __tablename__ = 'scores'
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    id_stu = Column(Integer, ForeignKey(Student.id_stu), nullable=False)
+    name = Column(String(50), nullable=False)
+    diem15 = Column(String(50), nullable=False)
+    diem1t = Column(String(50), nullable=False)
+    diemthi = Column(String(50), nullable=False)
 
     def __str__(self):
         return self.name

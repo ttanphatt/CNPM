@@ -24,27 +24,51 @@
         </div>
     </div>
 </nav>
-<div class="container">
-    <h1>Chọn Lớp Cần Nhập Điểm </h1>
-    <select class="form-select">
-        <option>12A2</option>
-        <option>11A7</option>
-        <option>10A5</option>
-        <option></option>
-    </select>
-<table border="1" class="st" >
-    {% for stu in Student %}
-    <tr>
-        <td>{{stu.stu_name}}</td>
-        <td>{{stu.gender}}</td>
-        <td>{{stu.address}}</td>
-        <td>{{stu.birthday}}</td>
-        <td>{{stu.email}}</td>
-    </tr>
-    {% endfor %}
-</table>
+<form method="post" action="{{ url_for('get_scores')}}">
+    <div class="container">
+        <h1>Chọn Lớp Cần Nhập Điểm </h1>
+        <select class="form-select">
+            <option>12A2</option>
+            <option>11A7</option>
+            <option>10A5</option>
+            <option></option>
+        </select>
+        <h3 style='text-align: center'>Chọn Môn Học Cần Nhập Điểm </h3>
+        <select class="form-select">
+            <option>Toán Học</option>
+            <option>Văn Học</option>
+            <option>Tiếng Anh</option>
+            <option>Vật Lí</option>
+            <option>Hóa Học</option>
+            <option>Sinh Học</option>
+        </select>
 
-</div>
+        <section class="showDSL">
+            <h3 style='text-align: left'>Danh sách lớp: </h3>
+            <table class="tb_dsl">
+                <tr>
+                    <th>STT</th>
+                    <th>Họ tên</th>
+                    <th>Điểm 15'</th>
+                    <th>Điểm 1 tiết</th>
+                    <th>Điểm thi</th>
+                </tr>
+                {% for stu in Student %}
+                <tr>
+                    <td>{{stu.id_stu}}</td>
+                    <td>{{stu.name}}</td>
+                    <td><input type="text" id="diem15" name="diem15"></td>
+                    <td><input type="text" id="diem1t" name="diem1t"></td>
+                    <td><input type="text" id="diemthi" name="diemthi"></td>
+                </tr>
+                {% endfor %}
+            </table>
+            <button type="submit" class="btn btn-primary">SUBMIT</button>
+
+        </section>
+
+    </div>
+</form>
 <style>
     table.st{
         border-collapse: collapse ;
@@ -56,6 +80,7 @@
         margin:0 auto;
     }
 </style>
+
 
 <!--<div class="dropdown">-->
 <!--  <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">-->

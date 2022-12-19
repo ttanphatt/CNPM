@@ -1,5 +1,10 @@
 {% extends 'layout/base.html' %}
 {% block content %}
+{% if err_msg%}
+<div class="alert alert-danger">
+    <h4>{{err_msg}}</h4>
+</div>
+{% endif %}
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Trang Nhân Viên TRường</a>
@@ -37,30 +42,34 @@
             <div class="form_tiepnhan">
                 <form action="/action_page.php">
                     <div class="mb-3 mt-3">
+                        <label for="id_stu" class="form-label">Mã Học Sinh</label>
+                        <input type="number" class="form-control" id="id_stu" placeholder="Mã Học Sinh" name="id_stu">
+                    </div>
+                    <div class="mb-3 mt-3">
                         <label for="name" class="form-label">Họ và Tên:</label>
-                        <input type="name" class="form-control" id="name" placeholder="Họ và Tên" name="name">
+                        <input type="text" class="form-control" id="name" placeholder="Họ và Tên" name="name">
                     </div>
                     <div class="mb-3 mt-3">
                         <label for="sex" class="form-label">Giới Tính </label>
-                        <input type="sex" class="form-control" id="sex" placeholder="Nhập Giới Tính" name="sex">
+                        <input type="text" class="form-control" id="sex" placeholder="Nhập Giới Tính" name="sex">
                     </div>
                     <div class="mb-3 mt-3">
-                        <label for="date" class="form-label">Ngày Sinh </label>
-                        <input type="date" class="form-control" id="date" placeholder="Nhập Ngày Sinh" name="date">
+                        <label for=" birthday" class="form-label">Ngày Sinh </label>
+                        <input type="text" class="form-control" id=" birthday" placeholder="Nhập Ngày Sinh" name="birthday">
                     </div>
                     <div class="mb-3 mt-3">
                         <label for="address" class="form-label">Địa Chỉ </label>
-                        <input type="address" class="form-control" id="address" placeholder="Nhập địa chỉ"
+                        <input type="text" class="form-control" id="address" placeholder="Nhập địa chỉ"
                                name="address">
                     </div>
                     <div class="mb-3 mt-3">
                         <label for="number" class="form-label">Số Điện Thoại: </label>
-                        <input type="phone" class="form-control" id="number" placeholder="Nhập số điện thoại "
+                        <input type="text" class="form-control" id="number" placeholder="Nhập số điện thoại "
                                name="number">
                     </div>
                     <div class="mb-3 mt-3">
                         <label for="email" class="form-label">Email:</label>
-                        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                        <input type="text" class="form-control" id="email" placeholder="Enter email" name="email">
                     </div>
                     <div class="form-check mb-3">
                         <label class="form-check-label">
