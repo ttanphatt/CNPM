@@ -12,7 +12,7 @@ from sqlalchemy.orm import relationship, backref
 from QuanLiHS import app, db
 from enum import Enum as UserEnum
 from flask_login import UserMixin
-from datetime import datetime
+
 
 
 # class UserRole(UserEnum):
@@ -36,14 +36,25 @@ class Admin(BaseModel):
         return self.name
 
 
-class Students(BaseModel):
+class Student(BaseModel):
     __tablename__ = 'Students'
-    # student_id = Column(Integer, ForeignKey(Admin.id))
+    # id_stu = Column(Integer, primary_key=True, autoincrement=True)
+    # id_scores = relationship('Student', backref='scores', lazy=False)
     stu_name = Column(String(50), nullable=False)
     gender = Column(String(50), nullable=False)
-    year = Column(String(50), nullable=False)
+    birthday = Column(String(50), nullable=False)
     address = Column(String(100), nullable=False)
+    number_phone = Column(String(100), nullable=False)
+    mail = Column(String(100), nullable=False)
 
+    def __str__(self):
+        return self.name
+
+class scores(BaseModel):
+    __tablename__ = 'Scores'
+    #id_stu = Column(Integer, ForeignKey(Student.id_stu), nullabl=False)
+    stu_name = Column(String(50), nullable=False)
+    gender = Column(String(50), nullable=False)
 
     def __str__(self):
         return self.name

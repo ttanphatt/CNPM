@@ -1,0 +1,29 @@
+[{
+  "id": 1,
+  "name": "Thái Tấn Phát",
+  "gender": "Gay",
+  "birthday": "10/2/2002",
+  "address": "soc trang",
+  "number_phone": "123456789",
+  "email": "hvdsgjfjdsgf"
+},{
+  "id": 2,
+  "name": "Nguyễn Thanh Thuyền",
+  "gender": "Gay",
+  "birthday": "10/2/2002",
+  "address": "soc trang",
+  "number_phone": "123456789",
+  "email": "hvdsgjfjdsgf"
+},{
+  "id": 1,
+  "name": "Nguyễn Toàn Mỹ",
+  "gender": "Nữ",
+  "birthday": "2/11/2002",
+  "address": "Tiền Giang",
+  "number_phone": "123456789",
+  "email": "hvdsgjfjdsgf"
+}
+
+
+
+]

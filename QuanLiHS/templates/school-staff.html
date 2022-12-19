@@ -1,66 +1,164 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>QLHS-NV</title>
-    <link href="{{ url_for('static', filename='css/style-nav.css') }}"  rel="stylesheet" />
-      <link href="{{ url_for('static', filename='css/school-staff.css') }}"  rel="stylesheet" />
+{% extends 'layout/base.html' %}
+{% block content %}
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Trang Nhân Viên TRường</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Trang chủ</a>
+                </li>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-<body>
-  <nav class="navbar navbar-expand-sm bg-light">
+                <li class="nav-item">
+                    <a class="nav-link text-danger" href="/logout">Tiếp Nhận Học Sinh </a>
+                </li>
 
-  <div class="container-fluid">
-    <!-- Links -->
-    <ul class="navbar-nav">
-      <li class="nav-name">
-        <h4>TRANG NHÂN VIÊN TRƯỜNG</h4>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Tiếp nhận học sinh</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Lập danh sách lớp</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Điều chỉnh danh sách lớp</a>
-      </li>
-    </ul>
-  </div>
+               <li class="nav-item">
+                    <a class="nav-link text-danger" href="/logout">Điều Chỉnh Danh Sách Lớp </a>
+                </li>
+
+            </ul>
+            <form class="d-flex" action="/">
+                <input class="form-control me-2" name="keyword" type="text" placeholder="Nhập từ khóa...">
+                <button class="btn btn-primary" type="submit">Tìm</button>
+            </form>
+        </div>
+    </div>
 </nav>
-<div class="functions">
-  <div class="TNHS">
-    <h2> Tiếp nhận học sinh</h2>
-    <div class="form_tiepnhan">
-    <form action="/action_page.php">
-      <div class="mb-3 mt-3">
-        <label for="email" class="form-label">Email:</label>
-        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
-      </div>
-      <div class="mb-3">
-        <label for="pwd" class="form-label">Password:</label>
-        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
-      </div>
-      <div class="form-check mb-3">
-        <label class="form-check-label">
-          <input class="form-check-input" type="checkbox" name="remember"> Remember me
-        </label>
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-      </div>
-  </div>
 
-  <div class="LDSL">
-    <h2> Lập danh sách lớp</h2>
 
-  </div>
-  <div class="DCDSL">
-    <h2> Điều chỉnh danh sách lớp</h2>
+<form method="post" action="{{ url_for('get_list') }}">
+    <div class="functions">
+        <div class="TNHS">
+            <h2> Tiếp nhận học sinh</h2>
+            <div class="form_tiepnhan">
+                <form action="/action_page.php">
+                    <div class="mb-3 mt-3">
+                        <label for="name" class="form-label">Họ và Tên:</label>
+                        <input type="name" class="form-control" id="name" placeholder="Họ và Tên" name="name">
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <label for="sex" class="form-label">Giới Tính </label>
+                        <input type="sex" class="form-control" id="sex" placeholder="Nhập Giới Tính" name="sex">
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <label for="date" class="form-label">Ngày Sinh </label>
+                        <input type="date" class="form-control" id="date" placeholder="Nhập Ngày Sinh" name="date">
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <label for="address" class="form-label">Địa Chỉ </label>
+                        <input type="address" class="form-control" id="address" placeholder="Nhập địa chỉ"
+                               name="address">
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <label for="number" class="form-label">Số Điện Thoại: </label>
+                        <input type="phone" class="form-control" id="number" placeholder="Nhập số điện thoại "
+                               name="number">
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <label for="email" class="form-label">Email:</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                    </div>
+                    <div class="form-check mb-3">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" name="remember"> Remember me
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
 
-  </div>
-</div>
-</div>
-</body>
-</html>
+    </div>
+</form>
+
+{% endblock %}
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>QLHS-NV</title>-->
+<!--    <link href="{{ url_for('static', filename='css/style-nav.css') }}"  rel="stylesheet" />-->
+<!--      <link href="{{ url_for('static', filename='css/school-staff.css') }}"  rel="stylesheet" />-->
+
+<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+<!--</head>-->
+<!--<body>-->
+<!--  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">-->
+<!--    <div class="container-fluid">-->
+<!--        <a class="navbar-brand" href="#">Trang Nhân Viên TRường</a>-->
+<!--        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">-->
+<!--            <span class="navbar-toggler-icon"></span>-->
+<!--        </button>-->
+<!--        <div class="collapse navbar-collapse" id="collapsibleNavbar">-->
+<!--            <ul class="navbar-nav me-auto">-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="/">Trang chủ</a>-->
+<!--                </li>-->
+
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link text-danger" href="/logout">Tiếp Nhận Học Sinh </a>-->
+<!--                </li>-->
+<!--               <li class="nav-item">-->
+<!--                    <a class="nav-link text-danger" href="/logout">Lập Danh Sách Lớp </a>-->
+<!--                </li>-->
+<!--               <li class="nav-item">-->
+<!--                    <a class="nav-link text-danger" href="/logout">Điều Chỉnh Danh Sách Lớp </a>-->
+<!--                </li>-->
+
+<!--            </ul>-->
+<!--            <form class="d-flex" action="/">-->
+<!--                <input class="form-control me-2" name="keyword" type="text" placeholder="Nhập từ khóa...">-->
+<!--                <button class="btn btn-primary" type="submit">Tìm</button>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</nav>-->
+<!--<div class="functions">-->
+<!--  <div class="TNHS">-->
+<!--    <h2> Tiếp nhận học sinh</h2>-->
+<!--    <div class="form_tiepnhan">-->
+<!--    <form action="/action_page.php">-->
+<!--      <div class="mb-3 mt-3">-->
+<!--        <label for="name" class="form-label">Họ và Tên:</label>-->
+<!--        <input type="name" class="form-control" id="name" placeholder="Họ và Tên" name="name">-->
+<!--      </div>-->
+<!--      <div class="mb-3 mt-3">-->
+<!--        <label for="sex" class="form-label">Giới Tính  </label>-->
+<!--        <input type="sex" class="form-control" id="sex" placeholder="Nhập Giới Tính" name="sex">-->
+<!--      </div>-->
+<!--      <div class="mb-3 mt-3">-->
+<!--        <label for="date" class="form-label">Ngày Sinh </label>-->
+<!--        <input type="date" class="form-control" id="date" placeholder="Nhập Ngày Sinh" name="date">-->
+<!--      </div>-->
+<!--      <div class="mb-3 mt-3">-->
+<!--        <label for="address" class="form-label">Địa Chỉ </label>-->
+<!--        <input type="address" class="form-control" id="address" placeholder="Nhập địa chỉ" name="address">-->
+<!--      </div>-->
+<!--      <div class="mb-3 mt-3">-->
+<!--        <label for="number" class="form-label">Số Điện Thoại: </label>-->
+<!--        <input type="phone" class="form-control" id="number" placeholder="Nhập số điện thoại " name="number">-->
+<!--      </div>-->
+<!--      <div class="mb-3 mt-3">-->
+<!--        <label for="email" class="form-label">Email:</label>-->
+<!--        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">-->
+<!--      </div>-->
+<!--      <div class="form-check mb-3">-->
+<!--        <label class="form-check-label">-->
+<!--          <input class="form-check-input" type="checkbox" name="remember"> Remember me-->
+<!--        </label>-->
+<!--      </div>-->
+<!--      <button type="submit" class="btn btn-primary">Submit</button>-->
+<!--    </form>-->
+<!--      </div>-->
+<!--  </div>-->
+
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
