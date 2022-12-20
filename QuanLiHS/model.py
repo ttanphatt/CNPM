@@ -1,12 +1,7 @@
-# from sqlalchemy import Column, Integer, String, Text, Boolean, Float, ForeignKey, Enum, DateTime
-# from sqlalchemy.orm import relationship
-# from QuanLiHS import db, app
-# from enum import Enum as UserEnum
-# from flask_login import UserMixin
-# class User(BaseModel, UserMixin):
 
 
 import hashlib
+
 from sqlalchemy import Column, Integer, String, Text, Boolean, Float, ForeignKey, Enum
 from sqlalchemy.orm import relationship, backref
 from QuanLiHS import app, db
@@ -15,10 +10,6 @@ from flask_login import UserMixin
 
 
 
-
-# class UserRole(UserEnum):
-#     USER = 1
-#     ADMIN = 2
 
 class BaseModel(db.Model):
     __abstract__ = True
@@ -37,6 +28,15 @@ class Admin(BaseModel):
         return self.name
 
 
+class DanhSachLop(BaseModel):
+    __tablename__ = 'DanhSachLop'
+    TenLop = Column(String(50), nullable=False)
+    Siso = Column(String(50), nullable=False)
+
+    def __str__(self):
+        return self.name
+
+
 class Student(BaseModel):
     __tablename__ = 'Students'
     name = Column(String(50), nullable=False)
@@ -45,6 +45,7 @@ class Student(BaseModel):
     address = Column(String(100), nullable=False)
     number = Column(String(100), nullable=False)
     email = Column(String(100), nullable=False)
+
 
 
     def __str__(self):
@@ -72,6 +73,13 @@ class Mon(BaseModel):
     def __str__(self):
         return self.name
 
+
+class LopHoc(BaseModel):
+    __tablename__ = 'Lop Hoc'
+    Lop_name = Column(String(50), nullable=False)
+
+    def __str__(self):
+        return self.name
 
 if __name__ == '__main__':
     with app.app_context():

@@ -41,10 +41,6 @@ def load_student():
     student = Student.query.all()
     return student
 
-# def stats():
-#     return scores.query.join(Student, Student.i.__eq__(scores.id))\
-#                              .add_columns(func.count(Student.id))\
-#                             .group_by()
 
 # def add_list(name, sex, date, address, number, email,**kwargs):
 #     HS = Student(name=name.strip(),
