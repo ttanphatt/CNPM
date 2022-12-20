@@ -12,10 +12,6 @@
                     <a class="nav-link" href="/">Trang chủ</a>
                 </li>
 
-               <li class="nav-item">
-                    <a class="nav-link text-danger" href="{{url_for('XuatDiem')}}">Xuất Bảng Điểm  </a>
-                </li>
-
             </ul>
             <form class="d-flex" action="/">
                 <input class="form-control me-2" name="keyword" type="text" placeholder="Nhập từ khóa...">
@@ -26,14 +22,14 @@
 </nav>
 <form method="post" action="{{ url_for('get_scores')}}">
     <div class="container">
-        <h1>Chọn Lớp Cần Nhập Điểm </h1>
+        <h1>Chọn Lớp Cần Xuất Điểm </h1>
         <select class="form-select">
             <option>12A2</option>
             <option>11A7</option>
             <option>10A5</option>
             <option></option>
         </select>
-        <h3 style='text-align: center'>Chọn Môn Học Cần Nhập Điểm </h3>
+        <h3 style='text-align: center'>Chọn Môn Học Cần Xuất Điểm  </h3>
         <select class="form-select">
             <option>Toán Học</option>
             <option>Văn Học</option>
@@ -54,18 +50,16 @@
                     <th>Điểm 1 tiết</th>
                     <th>Điểm thi</th>
                 </tr>
-                {% for stu in Student %}
+                {% for st in scores %}
                 <tr>
-                    <td>{{stu.id}}</td>
-                    <td>{{stu.name}}</td>
-                    <td><input type="text" id="diem15" name="diem15"></td>
-                    <td><input type="text" id="diem1t" name="diem1t"></td>
-                    <td><input type="text" id="diemthi" name="diemthi"></td>
+                    <td>{{st.id_stu}}</td>
+                    <td>{{st.name}}</td>
+                    <td>{{st.diem15}}</td>
+                    <td>{{st.diem1t}}</td>
+                    <td>{{st.diemthi}}</td>
                 </tr>
                 {% endfor %}
             </table>
-            <button type="submit" class="btn btn-primary">SUBMIT</button>
-
         </section>
     </form>
 </div>
